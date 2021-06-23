@@ -5,7 +5,7 @@
 using namespace std;
 
 int N, cnt;
-vector<pair<int, int>> m;
+vector<pair<int, int> > m;
 
 bool cmp(const pair<int, int> &a, const pair<int, int> &b) {
     if (a.second == b.second) return a.first < b.first;

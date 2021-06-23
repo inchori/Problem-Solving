@@ -12,6 +12,8 @@ int main() {
         dp[1][i] = 1;
     }
 
+    //끝자리 기준으로 dp에 저장
+
     for (int i = 2; i <= N; i++) {
         dp[i][0] = dp[i - 1][1];
         for (int j = 1; j <= 9; j++) {
