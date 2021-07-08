@@ -2,25 +2,33 @@
 
 using namespace std;
 
-int N, S, result;
+int N, S, ans = 0;
 int arr[25];
 
-void go(int i, int sum) {
-    if (i == N) return;
-    if (sum + arr[i] == S) result++;
-
-    go(i + 1, sum + arr[i]);
-    go(i + 1, sum);
+void dfs(int sum, int idx) {
+    if (idx == N - 1) {
+        if (sum == S) {
+            ans++;
+        }
+        return;
+    }
+    dfs(sum + arr[idx], idx + 1);
+    dfs(sum, idx + 1);
 }
 
 int main() {
-    scanf("%d %d", &N, &S);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    cin >> N >> S;
+
     for (int i = 0; i < N; i++) {
-        scanf("%d", &arr[i]);
+        cin >> arr[i];
     }
 
-    go(0, 0);
-
-    printf("%d\n", result);
+    dfs(0, 0);
+    if (S == 0) ans -= 1;
+    cout << ans << "\n";
     return 0;
 }
